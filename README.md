@@ -2,6 +2,10 @@
 
 Advanced offline-first speech-to-speech translation scaffold for English, Urdu, and additional language pairs.
 
+## Prototype Status
+
+This project is a prototype and proof-of-concept, not a fully functional production translation system. Some features use lightweight fallbacks or browser/device capabilities, and high-quality offline STT, translation, and TTS require downloading and configuring the proper local models and voices.
+
 ## Architecture
 
 - `backend/`: FastAPI service for auth, STT, translation, RAG, TTS, analytics, and realtime WebSocket conversation.
