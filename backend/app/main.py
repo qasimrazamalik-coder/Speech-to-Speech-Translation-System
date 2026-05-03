@@ -168,6 +168,11 @@ async def conversation_socket(socket: WebSocket) -> None:
         token = socket.query_params.get("token", "")
         claims = decode_token(token)
         username = claims["sub"]
+        with get_db() as conn:
+            user = conn.execute("SELECT id, username FROM users WHERE username = ?", (username,)).fetchone()
+        if not user:
+            await socket.close(code=1008)
+            return
         while True:
             payload = await socket.receive_json()
             text = payload.get("text", "")
@@ -179,6 +184,18 @@ async def conversation_socket(socket: WebSocket) -> None:
             emotion = detect_emotion(text)
             audio_url = tts.speak_to_file(translated, target_lang, emotion)
             memory.add(username, text, translated)
+            save_event(
+                user["id"],
+                TranslatePayload(
+                    text=text,
+                    source_lang=source_lang,
+                    target_lang=target_lang,
+                    domain=domain,
+                    speak=True,
+                ),
+                translated,
+                emotion,
+            )
             await socket.send_json(
                 {
                     "source_text": text,
