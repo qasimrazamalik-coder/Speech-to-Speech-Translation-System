@@ -1,0 +1,50 @@
+:root {
+  color: #172026;
+  background: #f3f6f4;
+  font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, select, textarea { font: inherit; }
+button { border: 0; border-radius: 6px; padding: 10px 13px; cursor: pointer; background: #22352f; color: white; display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
+input, select, textarea { width: 100%; border: 1px solid #c8d4ce; border-radius: 6px; padding: 11px; background: white; color: #172026; }
+textarea { min-height: 120px; resize: vertical; line-height: 1.45; }
+label { font-size: 12px; font-weight: 700; color: #5d6f67; margin-top: 14px; display: block; }
+
+.auth-shell { min-height: 100vh; display: grid; place-items: center; background: linear-gradient(135deg, #dfe9e4, #f7f1df); }
+.auth-panel { width: min(420px, calc(100vw - 28px)); background: white; border: 1px solid #dbe3df; border-radius: 8px; padding: 28px; box-shadow: 0 18px 40px #1f33280f; }
+.auth-panel h1 { margin: 12px 0 6px; font-size: 30px; }
+.auth-panel p { color: #607168; margin: 0 0 22px; }
+.auth-panel input { margin-bottom: 10px; }
+.mark { width: 48px; height: 48px; border-radius: 8px; display: grid; place-items: center; background: #e0f0e8; color: #1e5a44; }
+.segmented { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0 12px; }
+.segmented button { background: #dfe7e3; color: #172026; }
+.segmented .active, .primary { background: #1f6b50; color: white; }
+.status { color: #66766f; font-size: 13px; margin-top: 10px; display: block; }
+
+.app-shell { min-height: 100vh; display: grid; grid-template-columns: 280px 1fr; }
+aside { background: #14231e; color: white; padding: 24px; }
+aside h1 { font-size: 22px; display: flex; align-items: center; gap: 10px; margin: 0 0 24px; }
+aside label { color: #b7c8c0; }
+aside select { margin-top: 6px; }
+aside button { width: 100%; margin-top: 20px; background: #d8e6df; color: #14231e; }
+.workspace { padding: 24px; }
+.composer { background: white; border: 1px solid #dbe3df; border-radius: 8px; padding: 16px; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr); gap: 18px; margin-top: 18px; }
+.panel { background: white; border: 1px solid #dbe3df; border-radius: 8px; padding: 16px; min-height: 260px; }
+.panel h2 { font-size: 17px; margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+.turn { border-bottom: 1px solid #edf1ef; padding: 14px 0; }
+.turn:first-of-type { padding-top: 0; }
+.turn small { text-transform: uppercase; color: #1f6b50; font-weight: 800; font-size: 11px; }
+.turn p { margin: 6px 0; color: #4b5d55; }
+.turn strong { display: block; font-size: 18px; margin-bottom: 10px; }
+audio { width: 100%; height: 36px; }
+
+@media (max-width: 900px) {
+  .app-shell { grid-template-columns: 1fr; }
+  aside { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  aside h1, aside button { grid-column: 1 / -1; }
+  .grid { grid-template-columns: 1fr; }
+}
